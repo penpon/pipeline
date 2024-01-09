@@ -1,0 +1,101 @@
+#+REVEAL_ROOT: ../reveal.js
+#+REVEAL_EXTRA_CSS: ./slides.css
+#+REVEAL_THEME: dracula
+#+REVEAL_HLEVEL: 10
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2><h4>%a</h4>
+#+REVEAL_PLUGINS: (highlight notes)
+#+OPTIONS: \n:t
+#+OPTIONS: ^:{}
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+TITLE: 俺の正月
+#+Author: 🍉ぬ🍉
+
+#+REVEAL_INIT_OPTIONS: slideNumber: 'c/t', transition: 'convex'
+
+#+BEGIN_NOTES
+Speaker View
+#+END_NOTES
+
+* 背景
+連休だしなにかやってみるぞー！
+#+ATTR_REVEAL: :frag (appear)
+- Webアプリケーションに対する脆弱性診断
+  - セキュリティは興味あるので
+- dotfilesの整理
+  - vimrcとzshrcは特にぐちゃぐちゃ
+- DNSの勉強
+  - 仕事で触れるので
+* 実際は？
+子守りをしていました😇
+* 🍉ぬ🍉は子持ち！？
+#+ATTR_REVEAL: :frag (appear)
+妹の子供です
+3歳と1歳の女の子
+#+ATTR_REVEAL: :frag (appear)
+#+BEGIN_EXPORT html
+<div style="display: flex; justify-content: space-around;">
+  <img src="images/03.JPG" alt="03" style="width: 250px;" class="fragment appear">
+  <img src="images/01.JPG" alt="01" style="width: 250px;" class="fragment appear">
+</div>
+#+END_EXPORT
+* Agenda
+- 育児の大変さ
+  - 3歳児
+  - 1歳児
+- 感じたこと
+- おまけ
+* 育児の大変さ
+** 1歳児
+- 泣き叫ぶ
+  - うんちしてる
+  - ミルクがほしい
+  - 構ってほしい
+- 常にそばにいる必要がある
+  - 危ない所に移動しようとしているかも？
+  - 危ない物を食べようとしているかも？
+** 3歳児
+- 泣き叫ぶ
+  - 対話が多少できるようになるので厄介
+  - 自分の意思が通らないと号泣
+- 暴れ回る
+ - 同じことに永遠と付き合わされる
+** 泣いてます
+#+ATTR_HTML: :width 500px
+[[./images/naku.jpg]]
+* 感じたこと
+- 想像以上に自由がない
+  - 子育てする人の気持ちが少し分かった
+- 公共の場は怖い
+  - 基本的に何をやらかすかわからない
+  - 電車移動では緊急用のボタンを押そうとした
+- 車運転できるようになりたい
+  - 公共の交通機関は怖いので
+* おまけ
+技術要素皆無だったので
+前からやってみたかった方法でスライド作成しました
+今回は引用の紹介だけします
+#+BEGIN_NOTES
+プレゼンライブラリの reveal.js と org-mode ファイルを reveal.js 形式にする ox-reveal を用意する。
+#+END_NOTES
+** org-modeとは
+#+begin_quote
+#+ATTR_HTML: :class small-text
+Emacsの拡張可能なメジャーモード
+org-modeは、様々な機能をサポートしています。
+メモを取ることから、タスクリストの管理、プロジェクトの管理、
+文書の編集、再現性のある計算ノート、文芸的プログラミングなどです。
+これらを高速で効率的なプレーンテキストシステムで実現しています。
+#+end_quote
+[[https://orgmode.org/ja/][参考]]
+** reveal.jsとは
+#+begin_quote
+#+ATTR_HTML: :class small-text
+reveal.js is an open source HTML presentation framework.
+It's a tool that enables anyone with a web browser to create fully-featured and beautiful presentations for free.
+#+end_quote
+[[https://revealjs.com/][参考]]
+** 実際の画面
+#+ATTR_HTML: :width 90%
+[[./images/editor.png]]
+** 終わります
