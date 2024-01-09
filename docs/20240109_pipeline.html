@@ -14,7 +14,18 @@
 <link rel="stylesheet" href="../reveal.js/dist/theme/dracula.css" id="theme"/>
 
 <link rel="stylesheet" href="./slides.css"/>
-<link rel="stylesheet" href="../reveal.js/plugin/highlight/zenburn.css"/></head>
+<link rel="stylesheet" href="../reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
 <body>
 <div class="reveal">
 <div class="slides">
@@ -27,8 +38,8 @@ Speaker View<br />
 
 </aside>
 <section>
-<section id="slide-orgb8c3584">
-<h2 id="orgb8c3584">背景</h2>
+<section id="slide-org2f05c8e">
+<h2 id="org2f05c8e">背景</h2>
 <p>
 連休だしなにかやってみるぞー！<br />
 </p>
@@ -53,16 +64,16 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-orgca9f4c8">
-<h2 id="orgca9f4c8">実際は？</h2>
+<section id="slide-org6d59803">
+<h2 id="org6d59803">実際は？</h2>
 <p>
 子守りをしていました😇<br />
 </p>
 </section>
 </section>
 <section>
-<section id="slide-org75acd97">
-<h2 id="org75acd97">🍉ぬ🍉は子持ち！？</h2>
+<section id="slide-orgf4f2e88">
+<h2 id="orgf4f2e88">🍉ぬ🍉は子持ち！？</h2>
 <p class="fragment (appear)">
 妹の子供です<br />
 3歳と1歳の女の子<br />
@@ -74,8 +85,8 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-org36214c2">
-<h2 id="org36214c2">Agenda</h2>
+<section id="slide-org20d4eb8">
+<h2 id="org20d4eb8">Agenda</h2>
 <ul>
 <li>育児の大変さ<br />
 <ul>
@@ -90,15 +101,15 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-org687a103">
-<h2 id="org687a103">育児の大変さ</h2>
-<div class="outline-text-2" id="text-org687a103">
+<section id="slide-org0e944e8">
+<h2 id="org0e944e8">育児の大変さ</h2>
+<div class="outline-text-2" id="text-org0e944e8">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org6a3b6c5">
-<h3 id="org6a3b6c5">1歳児</h3>
+<section id="slide-orgef8d25a">
+<h3 id="orgef8d25a">1歳児</h3>
 <ul>
 <li>泣き叫ぶ<br />
 <ul>
@@ -118,8 +129,8 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-orgb0b6b3b">
-<h3 id="orgb0b6b3b">3歳児</h3>
+<section id="slide-org3482bef">
+<h3 id="org3482bef">3歳児</h3>
 <ul>
 <li>泣き叫ぶ<br />
 <ul>
@@ -137,18 +148,18 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-org8d0fa3c">
-<h3 id="org8d0fa3c">泣いてます</h3>
+<section id="slide-orgd7fe32e">
+<h3 id="orgd7fe32e">泣いてます</h3>
 
-<div id="orge082edd" class="figure">
+<div id="org824bbf4" class="figure">
 <p><img src="./images/naku.jpg" alt="naku.jpg" width="500px" /><br />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgc0d0a97">
-<h2 id="orgc0d0a97">感じたこと</h2>
+<section id="slide-org2eaa1fa">
+<h2 id="org2eaa1fa">感じたこと</h2>
 <ul>
 <li>想像以上に自由がない<br />
 <ul>
@@ -171,8 +182,8 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-org584cb47">
-<h2 id="org584cb47">おまけ</h2>
+<section id="slide-org17aab3d">
+<h2 id="org17aab3d">おまけ</h2>
 <p>
 技術要素皆無だったので<br />
 前からやってみたかった方法でスライド作成しました<br />
@@ -187,8 +198,8 @@ Speaker View<br />
 </section>
 </section>
 <section>
-<section id="slide-orga2d2eb4">
-<h3 id="orga2d2eb4">org-modeとは</h3>
+<section id="slide-orga740638">
+<h3 id="orga740638">org-modeとは</h3>
 <blockquote >
 <p class="small-text">
 Emacsの拡張可能なメジャーモード<br />
@@ -204,8 +215,8 @@ org-modeは、様々な機能をサポートしています。<br />
 </section>
 </section>
 <section>
-<section id="slide-org292d91e">
-<h3 id="org292d91e">reveal.jsとは</h3>
+<section id="slide-orgd2baf15">
+<h3 id="orgd2baf15">reveal.jsとは</h3>
 <blockquote >
 <p class="small-text">
 reveal.js is an open source HTML presentation framework.<br />
@@ -218,18 +229,18 @@ It&rsquo;s a tool that enables anyone with a web browser to create fully-feature
 </section>
 </section>
 <section>
-<section id="slide-org987b77d">
-<h3 id="org987b77d">実際の画面</h3>
+<section id="slide-orgbe1e0d7">
+<h3 id="orgbe1e0d7">実際の画面</h3>
 
-<div id="orgdac5625" class="figure">
+<div id="orga3ace29" class="figure">
 <p><img src="./images/editor.png" alt="editor.png" width="90%" /><br />
 </p>
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org403a83d">
-<h3 id="org403a83d">終わります</h3>
+<section id="slide-org42a542f">
+<h3 id="org42a542f">終わります</h3>
 </section>
 </section>
 </div>
