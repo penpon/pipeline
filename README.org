@@ -3,3 +3,4 @@
 | 日付       | タイトル                  | Link |
 |------------+---------------------------+------|
 | 2024/01/09 | 俺の正月                  | [[https://penpon.github.io/pipeline/docs/20240109_pipeline.html][link]] |
+| 2024/08/26 | 俺のポケモン              | [[https://penpon.github.io/pipeline/docs/20240826_pipeline.html][link]] |

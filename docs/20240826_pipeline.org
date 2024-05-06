@@ -1,0 +1,229 @@
+#+REVEAL_ROOT: ../reveal.js
+#+REVEAL_EXTRA_CSS: ./slides.css
+#+REVEAL_THEME: dracula
+#+REVEAL_HLEVEL: 10
+#+REVEAL_TITLE_SLIDE: <h2>%t</h2><h4>%a</h4>
+#+REVEAL_PLUGINS: (highlight notes)
+#+OPTIONS: \n:t
+#+OPTIONS: ^:{}
+#+OPTIONS: num:nil
+#+OPTIONS: toc:nil
+#+TITLE: 俺のポケモン
+#+Author: 🍉ぬ🍉
+
+#+REVEAL_INIT_OPTIONS: slideNumber: 'c/t', transition: 'convex'
+
+* 最初のポケモン発売日
+1996年2月27日に任天堂から発売
+#+BEGIN_EXPORT html
+<div style="display: flex; justify-content: space-around;">
+  <img src="images/2nd/poke_r.jpeg" alt="poke_r" style="width: 250px;">
+  <img src="images/2nd/poke_g.jpeg" alt="poke_g" style="width: 250px;">
+</div>
+#+END_EXPORT
+#+BEGIN_NOTES
+この後に限定で青版がそしてピカチュウ版が発売されました
+Speaker View
+#+END_NOTES
+* それで？
+- シナリオについて話すの？
+- ポケモン対戦レートについて？
+- 種族値？個体値？努力値？
+#+BEGIN_NOTES
+前回は俺の正月というタイトルで正月の過ごし方を発表しました。
+今回もその流れで非技術の内容なのか？と思われた方、ご安心ください。
+技術話メインとなります！それがこちらです。
+#+END_NOTES
+* 機械語 × ポケモン
+#+BEGIN_NOTES
+なんと、ポケモン内でゲームを実装した人が現れたようです。
+どういうこと！？とびっくりしました。
+調べてみるとyoutubeに解説動画がいくつかあったのでそれを見ているうちに楽しくなってきて....
+#+END_NOTES
+[[./images/2nd/poke01.png]]
+* カッコ良い！！！！
+込み上げてくる好奇心...!!!
+- 自分も何か作ってみたい！
+- ポケモンの解析してみたい！
+- 機械語に触れてみたい！
+#+BEGIN_NOTES
+自分でもなにか作ってみたい！
+機械語でプログラミングしてみたい！
+という好奇心が出てきました。
+#+END_NOTES
+* Agenda
+- やってみたこと
+- ゲームボーイのハードウェア
+- ゲームボーイで使われるCPU命令
+- バグアイテムについて
+- まとめ
+* やってみたこと
+* ミュウを呼び出してみた
+#+BEGIN_EXPORT html
+<video width="640" height="360" controls>
+  <source src="images/2nd/poke_movie01.mp4" type="video/mp4">
+</video>
+#+END_EXPORT
+#+BEGIN_NOTES
+16進数を1byteずつ入力していきます
+#+END_NOTES
+* あれ...？それだけ？
+機械語に触れるだけで精一杯でした😵‍💫
+#+BEGIN_NOTES
+手持ちのポケモンを自動で100レベにしてステータスをMaxするようなプログラムを組んだりしていましたが、解説を含めて発表となるとこの程度が僕の限界でした。
+#+END_NOTES
+* 3E 15 EA 36 D0 C9
+http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf
+#+BEGIN_NOTES
+これが自分が初めて解読した機械語になります。
+ここのマニュアルと睨めっこすれば解読はできますがせっかくなのでこれを自分と読めるようにしていきましょう。
+
+例えば、3Eですと
+ロード命令でAレジスタに値を代入するものという流れで確認ができるわけです。
+page68
+#+END_NOTES
+* 前提知識
+- ゲームボーイのハードウェア
+- ゲームボーイで使われるCPU命令
+** ゲームボーイのハードウェア
+** CPU
+- プログラムを実行する
+- intel 8080を元にしたもの(カスタム8080)
+- 各種レジスタを内臓している
+  メインメモリよりも高速
+  8bitのレジスタ、A,B,C,D,E,H,L,F
+  16bitのレジスタ PC,SP
+#+BEGIN_NOTES
+注目して欲しいのは、メインメモリよりも高速な各種レジスタを内臓しているということです。
+今回はAレジスタを利用しますので、Aレジスタと出てきたらCPUの中の高速なものなんだなと思ってください。
+#+END_NOTES
+** メインメモリ
+- CPUで実行するプログラムやデータを保存しておく
+- HDDやSSDよりも高速
+#+BEGIN_NOTES
+次にメインメモリについてです。
+例えば、ロード命令ですとAレジスタに格納した値を特定のメインメモリアドレスに格納するといった作業があります。
+#+END_NOTES
+** エンディアン
+- ビッグエンディアン
+  データをバイト単位で配置する際のやり方のひとつで「最初のバイトからデータを並べる」やり方
+- リトルエンディアン
+  データをバイト単位で配置する際のやり方のひとつで「最後のバイトからデータを並べる」やり方
+
+https://wa3.i-3-i.info/diff112endiannes.html
+#+BEGIN_NOTES
+データの並べ方になります。
+例えば、1-10の数値をメインメモリに書き込むとき1-10とするのがビッグエンディアンで10-1とするのがリトルエンディアンとなります。
+ちなみにゲームボーイのCPUはリトルエンディアンになります。
+#+END_NOTES
+** ゲームボーイで使われるCPU命令
+** ld
+#+BEGIN_NOTES
+先ほどのマニュアルをみると分かる通り、load命令にもたくさんの種類があります。
+Opcodeと書いてあるものが16進数の文字列で書かれた機械語でそれがアセンブリ言語と1対1対応しています
+今回は3EとEAを利用します。
+
+カンマの前にある場所にカンマの後ろの値が読み込まれる
+
+(nn)
+2byteで示されたメインメモリのアドレスという意味
+#+END_NOTES
+- 3E: LD A,#
+#+begin_src bash
+ld a,15
+#+end_src
+#+BEGIN_EXPORT html
+<span style="font-size: 80%;">aレジスタに15を読み込む</span>
+<br>
+<br>
+#+END_EXPORT
+- EA: LD (nn),A
+#+begin_src bash
+ld (D036),a
+#+end_src
+#+BEGIN_EXPORT html
+<span style="font-size: 80%;">アドレス</span>
+  <span style="color:orange;">0xD036</span>
+<span style="font-size: 80%;">にaレジスタの値を読み込む</span>
+#+END_EXPORT
+** call/ret
+- call -> CD nn
+  #+BEGIN_EXPORT html
+  <span style="font-size: 80%;">サブルーチンを呼び出すときに使用される命令</span>
+  #+END_EXPORT
+- ret -> C9
+  #+BEGIN_EXPORT html
+  <span style="font-size: 80%;">サブルーチンから呼び出し元に戻るために使用される命令</span>
+  #+END_EXPORT
+#+BEGIN_NOTES
+callはサブルーチンから呼び出す時に使用される命令で、retはreturnのようなものと思ってください。
+それぞれ対応する機械語はこの通りで、callの場合はなにをコールするのかメインメモリの2byte分のアドレス指定が必要となります。
+#+END_NOTES
+* 3E 15 EA 36 D0 C9
+#+begin_src bash
+  D001: 0x3E [ld a,15]
+  D003: 0xEA [ld 0xD036,a]
+  D006: 0xC9 [ret]
+#+end_src
+#+BEGIN_NOTES
+改めて解説すると
+aレジスタに15を読み込みます。
+この15というのはミュウの内部コードとなります。
+その15が格納されたaレジスタをD036アドレスに格納します。
+そのあとはretで終了となります。
+D036アドレスはエンカウント情報を意味するアドレスとなります。
+つまり、エンカウント情報を意味するアドレスにミュウの内部コードを入れることによって任意のポケモンを出現させています。
+#+END_NOTES
+* バグアイテムについて
+** アイテムの呼び出し方
+- じてんしゃ
+  #+BEGIN_EXPORT html
+  <span style="color:orange;">0x5A91</span>
+  <span style="font-size: 80%;">に格納されているサブルーチンが呼び出される</span>
+  #+END_EXPORT
+- タウンマップ
+  #+BEGIN_EXPORT html
+  <span style="color:orange;">0x5A82</span>
+  <span style="font-size: 80%;">に格納されているサブルーチンが呼び出される</span>
+  #+END_EXPORT
+- バグアイテム
+  #+BEGIN_EXPORT html
+  <span style="font-size: 80%;">意図しないアドレスが呼び出されるためフリーズする</span>
+  #+END_EXPORT
+#+BEGIN_NOTES
+それではミュウを出現させる際に使っていたバグアイテムについて軽く触れていきます。
+各種どうぐはそれぞれ用意されたサブルーチンをcallすることによってどうぐを使用しています。
+そして、大概のバグアイテムは意図しないアドレス、例えばセーブデータを示すアドレスなどが呼び出されてしまうためフリーズしてしまいます。
+しかし、その中でも使い勝手が良いバグアイテムが有志によって発見されました。
+#+END_NOTES
+** なかよしバッヂ
+#+BEGIN_EXPORT html
+<span style="font-size: 80%;">
+都合がいいアドレスを呼ぶバグアイテムも存在する<br>
+先人がこのバグアイテムを利用してバイナリエディタを実装した<br>
+これを使って好きなように弄ることができる</span>
+#+END_EXPORT
+#+BEGIN_NOTES
+それがこのなかよしバッヂとなります。
+このなかよしバッヂを利用して先人たちがバイナリエディタを実装する方法を編み出してくれたためそれを今回利用しました。
+バイナリエディタがあればポケモンの世界を牛耳ることができます。
+#+END_NOTES
+** じてんしゃを呼び出す
+#+BEGIN_EXPORT html
+<video width="640" height="360" controls>
+  <source src="images/2nd/poke_movie02.mp4" type="video/mp4">
+</video>
+#+END_EXPORT
+#+BEGIN_NOTES
+先ほどお話しした自転車ですが、どうぐとしてじてんしゃを所持していなくても指定のアドレスをcallすれば利用することができます。
+#+END_NOTES
+* まとめ
+- ミュウを簡単に呼び出せた
+- 道具は様々なサブルーチンを呼び出すことにより実装されている
+- それを利用した便利なバグアイテムが存在する
+- バイナリエディタはカントー地方を支配できる
+* 終わります
+* 参考
+https://it.srad.jp/story/22/02/16/1617249/
+https://www.youtube.com/watch?v=RKEQ2ZD5wqk
+https://www.youtube.com/watch?v=qV1EJU6howc&t=1304s

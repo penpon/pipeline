@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>俺のポケモン</title>
+<meta name="author" content="🍉ぬ🍉"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="../reveal.js/dist/theme/dracula.css" id="theme"/>
+
+<link rel="stylesheet" href="./slides.css"/>
+<link rel="stylesheet" href="../reveal.js/plugin/highlight/zenburn.css"/></head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2>俺のポケモン</h2><h4>🍉ぬ🍉</h4>
+</section>
+
+<section>
+<section id="slide-org54b0783">
+<h2 id="org54b0783">最初のポケモン発売日</h2>
+<p>
+1996年2月27日に任天堂から発売<br />
+</p>
+<div style="display: flex; justify-content: space-around;">
+  <img src="images/2nd/poke_r.jpeg" alt="poke_r" style="width: 250px;">
+  <img src="images/2nd/poke_g.jpeg" alt="poke_g" style="width: 250px;">
+</div>
+<aside class="notes">
+<p>
+この後に限定で青版がそしてピカチュウ版が発売されました<br />
+Speaker View<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org1bb6c9e">
+<h2 id="org1bb6c9e">それで？</h2>
+<ul>
+<li>シナリオについて話すの？<br /></li>
+<li>ポケモン対戦レートについて？<br /></li>
+<li>種族値？個体値？努力値？<br /></li>
+
+</ul>
+<aside class="notes">
+<p>
+前回は俺の正月というタイトルで正月の過ごし方を発表しました。<br />
+今回もその流れで非技術の内容なのか？と思われた方、ご安心ください。<br />
+技術話メインとなります！それがこちらです。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org2c93911">
+<h2 id="org2c93911">機械語 × ポケモン</h2>
+<aside class="notes">
+<p>
+なんと、ポケモン内でゲームを実装した人が現れたようです。<br />
+どういうこと！？とびっくりしました。<br />
+調べてみるとyoutubeに解説動画がいくつかあったのでそれを見ているうちに楽しくなってきて&#x2026;.<br />
+</p>
+
+</aside>
+
+<div id="org4580b97" class="figure">
+<p><img src="./images/2nd/poke01.png" alt="poke01.png" /><br />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd6d7751">
+<h2 id="orgd6d7751">カッコ良い！！！！</h2>
+<p>
+込み上げてくる好奇心&#x2026;!!!<br />
+</p>
+<ul>
+<li>自分も何か作ってみたい！<br /></li>
+<li>ポケモンの解析してみたい！<br /></li>
+<li>機械語に触れてみたい！<br /></li>
+
+</ul>
+<aside class="notes">
+<p>
+自分でもなにか作ってみたい！<br />
+機械語でプログラミングしてみたい！<br />
+という好奇心が出てきました。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org931a28b">
+<h2 id="org931a28b">Agenda</h2>
+<ul>
+<li>やってみたこと<br /></li>
+<li>ゲームボーイのハードウェア<br /></li>
+<li>ゲームボーイで使われるCPU命令<br /></li>
+<li>バグアイテムについて<br /></li>
+<li>まとめ<br /></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org8eb0cf1">
+<h2 id="org8eb0cf1">やってみたこと</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgf4c21c4">
+<h2 id="orgf4c21c4">ミュウを呼び出してみた</h2>
+<video width="640" height="360" controls>
+  <source src="images/2nd/poke_movie01.mp4" type="video/mp4">
+</video>
+<aside class="notes">
+<p>
+16進数を1byteずつ入力していきます<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orga107d6f">
+<h2 id="orga107d6f">あれ&#x2026;？それだけ？</h2>
+<p>
+機械語に触れるだけで精一杯でした😵‍💫<br />
+</p>
+<aside class="notes">
+<p>
+手持ちのポケモンを自動で100レベにしてステータスをMaxするようなプログラムを組んだりしていましたが、解説を含めて発表となるとこの程度が僕の限界でした。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgfde3744">
+<h2 id="orgfde3744">3E 15 EA 36 D0 C9</h2>
+<p>
+<a href="http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf">http://marc.rawer.de/Gameboy/Docs/GBCPUman.pdf</a><br />
+</p>
+<aside class="notes">
+<p>
+これが自分が初めて解読した機械語になります。<br />
+ここのマニュアルと睨めっこすれば解読はできますがせっかくなのでこれを自分と読めるようにしていきましょう。<br />
+</p>
+
+<p>
+例えば、3Eですと<br />
+ロード命令でAレジスタに値を代入するものという流れで確認ができるわけです。<br />
+page68<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgb927664">
+<h2 id="orgb927664">前提知識</h2>
+<ul>
+<li>ゲームボーイのハードウェア<br /></li>
+<li>ゲームボーイで使われるCPU命令<br /></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org480b166">
+<h3 id="org480b166">ゲームボーイのハードウェア</h3>
+</section>
+</section>
+<section>
+<section id="slide-org52c06a7">
+<h3 id="org52c06a7">CPU</h3>
+<ul>
+<li>プログラムを実行する<br /></li>
+<li>intel 8080を元にしたもの(カスタム8080)<br /></li>
+<li>各種レジスタを内臓している<br />
+メインメモリよりも高速<br />
+8bitのレジスタ、A,B,C,D,E,H,L,F<br />
+16bitのレジスタ PC,SP<br /></li>
+
+</ul>
+<aside class="notes">
+<p>
+注目して欲しいのは、メインメモリよりも高速な各種レジスタを内臓しているということです。<br />
+今回はAレジスタを利用しますので、Aレジスタと出てきたらCPUの中の高速なものなんだなと思ってください。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgc24a54f">
+<h3 id="orgc24a54f">メインメモリ</h3>
+<ul>
+<li>CPUで実行するプログラムやデータを保存しておく<br /></li>
+<li>HDDやSSDよりも高速<br /></li>
+
+</ul>
+<aside class="notes">
+<p>
+次にメインメモリについてです。<br />
+例えば、ロード命令ですとAレジスタに格納した値を特定のメインメモリアドレスに格納するといった作業があります。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org701cd5a">
+<h3 id="org701cd5a">エンディアン</h3>
+<ul>
+<li>ビッグエンディアン<br />
+データをバイト単位で配置する際のやり方のひとつで「最初のバイトからデータを並べる」やり方<br /></li>
+<li>リトルエンディアン<br />
+データをバイト単位で配置する際のやり方のひとつで「最後のバイトからデータを並べる」やり方<br /></li>
+
+</ul>
+
+<p>
+<a href="https://wa3.i-3-i.info/diff112endiannes.html">https://wa3.i-3-i.info/diff112endiannes.html</a><br />
+</p>
+<aside class="notes">
+<p>
+データの並べ方になります。<br />
+例えば、1-10の数値をメインメモリに書き込むとき1-10とするのがビッグエンディアンで10-1とするのがリトルエンディアンとなります。<br />
+ちなみにゲームボーイのCPUはリトルエンディアンになります。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org60de61c">
+<h3 id="org60de61c">ゲームボーイで使われるCPU命令</h3>
+</section>
+</section>
+<section>
+<section id="slide-org09bd17b">
+<h3 id="org09bd17b">ld</h3>
+<aside class="notes">
+<p>
+先ほどのマニュアルをみると分かる通り、load命令にもたくさんの種類があります。<br />
+Opcodeと書いてあるものが16進数の文字列で書かれた機械語でそれがアセンブリ言語と1対1対応しています<br />
+今回は3EとEAを利用します。<br />
+</p>
+
+<p>
+カンマの前にある場所にカンマの後ろの値が読み込まれる<br />
+</p>
+
+<p>
+(nn)<br />
+2byteで示されたメインメモリのアドレスという意味<br />
+</p>
+
+</aside>
+<ul>
+<li>3E: LD A,#<br /></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre   ><code class="bash" >ld a,15
+</code></pre>
+</div>
+<span style="font-size: 80%;">aレジスタに15を読み込む</span>
+<br>
+<br>
+<ul>
+<li>EA: LD (nn),A<br /></li>
+
+</ul>
+<div class="org-src-container">
+
+<pre   ><code class="bash" >ld (D036),a
+</code></pre>
+</div>
+<span style="font-size: 80%;">アドレス</span>
+  <span style="color:orange;">0xD036</span>
+<span style="font-size: 80%;">にaレジスタの値を読み込む</span>
+</section>
+</section>
+<section>
+<section id="slide-orgdfa40b5">
+<h3 id="orgdfa40b5">call/ret</h3>
+<ul>
+<li><p>
+call -&gt; CD nn<br />
+</p>
+<span style="font-size: 80%;">サブルーチンを呼び出すときに使用される命令</span></li>
+<li><p>
+ret -&gt; C9<br />
+</p>
+<span style="font-size: 80%;">サブルーチンから呼び出し元に戻るために使用される命令</span></li>
+
+</ul>
+<aside class="notes">
+<p>
+callはサブルーチンから呼び出す時に使用される命令で、retはreturnのようなものと思ってください。<br />
+それぞれ対応する機械語はこの通りで、callの場合はなにをコールするのかメインメモリの2byte分のアドレス指定が必要となります。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org11acba5">
+<h2 id="org11acba5">3E 15 EA 36 D0 C9</h2>
+<div class="org-src-container">
+
+<pre   ><code class="bash" >  D001: 0x3E [ld a,15]
+  D003: 0xEA [ld 0xD036,a]
+  D006: 0xC9 [ret]
+</code></pre>
+</div>
+<aside class="notes">
+<p>
+改めて解説すると<br />
+aレジスタに15を読み込みます。<br />
+この15というのはミュウの内部コードとなります。<br />
+その15が格納されたaレジスタをD036アドレスに格納します。<br />
+そのあとはretで終了となります。<br />
+D036アドレスはエンカウント情報を意味するアドレスとなります。<br />
+つまり、エンカウント情報を意味するアドレスにミュウの内部コードを入れることによって任意のポケモンを出現させています。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org1628461">
+<h2 id="org1628461">バグアイテムについて</h2>
+<div class="outline-text-2" id="text-org1628461">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org5d9ce7c">
+<h3 id="org5d9ce7c">アイテムの呼び出し方</h3>
+<ul>
+<li><p>
+じてんしゃ<br />
+</p>
+<span style="color:orange;">0x5A91</span>
+<span style="font-size: 80%;">に格納されているサブルーチンが呼び出される</span></li>
+<li><p>
+タウンマップ<br />
+</p>
+<span style="color:orange;">0x5A82</span>
+<span style="font-size: 80%;">に格納されているサブルーチンが呼び出される</span></li>
+<li><p>
+バグアイテム<br />
+</p>
+<span style="font-size: 80%;">意図しないアドレスが呼び出されるためフリーズする</span></li>
+
+</ul>
+<aside class="notes">
+<p>
+それではミュウを出現させる際に使っていたバグアイテムについて軽く触れていきます。<br />
+各種どうぐはそれぞれ用意されたサブルーチンをcallすることによってどうぐを使用しています。<br />
+そして、大概のバグアイテムは意図しないアドレス、例えばセーブデータを示すアドレスなどが呼び出されてしまうためフリーズしてしまいます。<br />
+しかし、その中でも使い勝手が良いバグアイテムが有志によって発見されました。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org2024a56">
+<h3 id="org2024a56">なかよしバッヂ</h3>
+<span style="font-size: 80%;">
+都合がいいアドレスを呼ぶバグアイテムも存在する<br>
+先人がこのバグアイテムを利用してバイナリエディタを実装した<br>
+これを使って好きなように弄ることができる</span>
+<aside class="notes">
+<p>
+それがこのなかよしバッヂとなります。<br />
+このなかよしバッヂを利用して先人たちがバイナリエディタを実装する方法を編み出してくれたためそれを今回利用しました。<br />
+バイナリエディタがあればポケモンの世界を牛耳ることができます。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-orgaebca8f">
+<h3 id="orgaebca8f">じてんしゃを呼び出す</h3>
+<video width="640" height="360" controls>
+  <source src="images/2nd/poke_movie02.mp4" type="video/mp4">
+</video>
+<aside class="notes">
+<p>
+先ほどお話しした自転車ですが、どうぐとしてじてんしゃを所持していなくても指定のアドレスをcallすれば利用することができます。<br />
+</p>
+
+</aside>
+</section>
+</section>
+<section>
+<section id="slide-org2dbb9dc">
+<h2 id="org2dbb9dc">まとめ</h2>
+<ul>
+<li>ミュウを簡単に呼び出せた<br /></li>
+<li>道具は様々なサブルーチンを呼び出すことにより実装されている<br /></li>
+<li>それを利用した便利なバグアイテムが存在する<br /></li>
+<li>バイナリエディタはカントー地方を支配できる<br /></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org5f5e555">
+<h2 id="org5f5e555">終わります</h2>
+</section>
+</section>
+<section>
+<section id="slide-org736c9a8">
+<h2 id="org736c9a8">参考</h2>
+<p>
+<a href="https://it.srad.jp/story/22/02/16/1617249/">https://it.srad.jp/story/22/02/16/1617249/</a><br />
+<a href="https://www.youtube.com/watch?v=RKEQ2ZD5wqk">https://www.youtube.com/watch?v=RKEQ2ZD5wqk</a><br />
+<a href="https://www.youtube.com/watch?v=qV1EJU6howc&amp;t=1304s">https://www.youtube.com/watch?v=qV1EJU6howc&amp;t=1304s</a><br />
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="../reveal.js/dist/reveal.js"></script>
+<script src="../reveal.js/plugin/highlight/highlight.js"></script>
+<script src="../reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealHighlight, RevealNotes],
+slideNumber: 'c/t', transition: 'convex'
+});
+
+</script>
+</body>
+</html>
